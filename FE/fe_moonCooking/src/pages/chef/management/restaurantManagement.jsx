@@ -23,7 +23,7 @@ import {
   addNewRestaurant,
   deleteRestaurant,
   getAllMyRestaurants,
-  getAllReceipts,
+  getAllMyReceipts,
   getAuthenUser,
   updateRestaurant,
 } from "../../../services/apiServices";
@@ -459,7 +459,7 @@ export default function RestaurantManagement() {
     try {
       const res1 = await getAllMyRestaurants();
       setRestaurants(res1);
-      const res2 = await getAllReceipts();
+      const res2 = await getAllMyReceipts();
       setAllReceipts(res2);
       const res3 = await getAuthenUser();
       setUser(res3);

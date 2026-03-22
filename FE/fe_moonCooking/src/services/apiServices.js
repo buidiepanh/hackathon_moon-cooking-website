@@ -46,9 +46,9 @@ const ratingReceipt = async (id, payload) => {
 };
 
 //===============CHEF API=======================
-const getAllReceipts = async () => {
+const getAllMyReceipts = async () => {
   try {
-    const res = await axios.get("/receipt/get-all");
+    const res = await axios.get("/receipt/get-my");
     return res.data;
   } catch (error) {
     console.log(error);
@@ -206,7 +206,7 @@ export {
   getAuthenUser,
   getReceiptDetails,
   ratingReceipt,
-  getAllReceipts,
+  getAllMyReceipts,
   addNewReceipt,
   updateReceipt,
   deleteReceipt,

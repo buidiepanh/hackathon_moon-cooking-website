@@ -24,7 +24,7 @@ import {
   addNewStep,
   deleteReceipt,
   deleteStep,
-  getAllReceipts,
+  getAllMyReceipts,
   getAllSteps,
   getAuthenUser,
   updateReceipt,
@@ -1947,7 +1947,7 @@ export default function ReceiptManagement() {
 
   const fetchData = async () => {
     try {
-      const res1 = await getAllReceipts();
+      const res1 = await getAllMyReceipts();
       setReceipts(res1);
       const res2 = await getAllSteps();
       setSteps(res2);
