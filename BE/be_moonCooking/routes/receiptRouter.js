@@ -8,6 +8,7 @@ const {
   deleteReceipt,
   getReceiptDetails,
   ratingReceipt,
+  getAllMyReceipts,
 } = require("../services/CRUDServices");
 
 const receiptRouter = express.Router();
@@ -15,6 +16,7 @@ receiptRouter.use(bodyParser.json());
 receiptRouter.use(authenticate);
 
 receiptRouter.get("/get-all", getAllReceipts);
+receiptRouter.get("/get-my", getAllMyReceipts);
 receiptRouter.get("/:receiptId", getReceiptDetails);
 receiptRouter.post("/add-receipt", addNewReceipt);
 receiptRouter.put("/:receiptId/rating", ratingReceipt);

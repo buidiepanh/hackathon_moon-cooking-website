@@ -78,10 +78,24 @@ const updateUserProfile = async (req, res, next) => {
 };
 
 //=========================RECEIPT================================
-
 const getAllReceipts = async (req, res, next) => {
   try {
     const result = await Receipts.find({});
+
+    if (!result) return res.status(400).json("Cannot get cooking receipts!");
+
+    return res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getAllMyReceipts = async (req, res, next) => {
+  try {
+    const user = await Users.findOne({ _id: req.user._id });
+    if (!user) return res.status.json("No user found!");
+
+    const result = await Receipts.find({ createdByChef: user._id });
 
     if (!result) return res.status(400).json("Cannot get cooking receipts!");
 
@@ -617,6 +631,7 @@ module.exports = {
   deleteStep,
 
   getAllReceipts,
+  getAllMyReceipts,
   getReceiptDetails,
   addNewReceipt,
   updateReceipt,
